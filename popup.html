@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lobster:400|Raleway:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    .button {
+      font-family: "Open Sans", sans-serif;
+      font-size: 1rem;
+      color: black;
+    }
+
+    .button {
+      background-color: #f2f3f4;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 2rem;
+      width: 4.5rem;
+      border-radius: 1rem;
+      cursor: pointer;
+    }
+
+    .row {
+      padding: 0 0.25rem;
+      pointer-events: none;
+    }
+
+    .circle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2rem;
+      width: 2rem;
+      border-radius: 50%;
+      background-color: #ffa116;
+      pointer-events: none;
+    }
+
+    @keyframes moveCircleRight {
+      from {
+        left: 0;
+      }
+
+      to {
+        transform: translateX(-100%);
+        left: 100%;
+      }
+    }
+
+    @keyframes moveCircleLeft {
+      from {
+        transform: translateX(-100%);
+        left: 100%;
+      }
+
+      to {
+        left: 0;
+      }
+    }
+
+    @keyframes transformToGray {
+      0% {
+        background-color: #f2f3f4;
+      }
+
+      100% {
+        background-color: #cccccc;
+      }
+    }
+
+    @keyframes transformToWhite {
+      0% {
+        background-color: #cccccc;
+      }
+
+      100% {
+        background-color: #f2f3f4;
+      }
+    }
+  </style>
+  <body class="popup" style="background-color: #3c3c3c">
+    <div class="button" id="button1">
+      <div class="row">On</div>
+      <div class="row">Off</div>
+      <div class="circle"></div>
+    </div>
+  </body>
+  <script src="./popup.js"></script>
+</html>

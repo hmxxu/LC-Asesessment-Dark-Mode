@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "LC Asesessment Dark Mode",
-  "description": "Dark mode for the asesessment page of LeetCode",
+  "name": "LC Assessment Dark Mode",
+  "description": "Dark mode for the assessment page of LeetCode",
   "author": "https://github.com/hmxxu",
   "version": "1.0.0",
   "icons": {
@@ -20,7 +20,7 @@
   ],
 
   "action": {
-    "default_title": "LC Asesessment Dark Mode",
+    "default_title": "LC Assessment Dark Mode",
     "default_popup": "popup.html"
   },
   "permissions": ["scripting"]

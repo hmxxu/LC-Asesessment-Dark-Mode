@@ -173,8 +173,9 @@ if (
   `);
 
   function setup() {
-    // Change topleft logo
-    document.getElementsByClassName("logo__3n_5")[0].src = "/_next/static/images/logo-dark-c96c407d175e36c81e236fcfdd682a0b.png";
+    // Change the top left logo
+    document.getElementsByClassName("logo__3n_5")[0].src =
+      "/_next/static/images/logo-dark-c96c407d175e36c81e236fcfdd682a0b.png";
 
     // Change <p> textcolor
     const paragraphs = document.querySelectorAll("p");
@@ -188,7 +189,7 @@ if (
     // Open console
     document.getElementsByClassName("custom-testcase__2ah7")[0].click();
 
-    // Remove deugger
+    // Remove debugger
     document
       .getElementsByClassName(
         "debugger-tab-header__qIb0 css-1kuaqiy-TabHeader e5i1odf4"

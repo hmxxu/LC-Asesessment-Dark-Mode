@@ -4,12 +4,11 @@ const addStyle = (() => {
   return (styleString) => (style.textContent = styleString);
 })();
 
-function setup1() {
-  if (
-    window.location.href.startsWith("https://leetcode.com/assessment/1") ||
-    window.location.href.startsWith("https://leetcode.com/assessment/2")
-  ) {
-    addStyle(`
+if (
+  window.location.href.startsWith("https://leetcode.com/assessment") ||
+  window.location.href.startsWith("https://leetcode.com/assessment/2")
+) {
+  addStyle(`
   .header__2ivW {
     background: #0f0f0f;
     border-bottom: None;
@@ -135,7 +134,7 @@ function setup1() {
     color: white;
 }
 .css-1nefimn {
-    background: rgb(69 90 100);
+    background: #455A64;
 }
 
 .css-1uwsqgo-TabHeaderRow, .css-1l22uh0-TabHeaderRow {
@@ -171,42 +170,96 @@ function setup1() {
 .ant-select-dropdown-light .ant-select-dropdown-menu-item {
     color: white;
 }
+
+.css-gme9cr-Wrapper {
+    background: #1A1A1A !important;
+}
+
+.navbarGlobal__MfPU * {
+    background: #313131;
+    color: white;
+}
+
+.css-1jdyqw4 {
+    background: #2A2A2A !important;
+}
+
+.css-l500pw-Header, .css-1dsbtzt {
+    color: white !important;
+}
+
+.nav-bar-container {
+    background: #313131;
+}
+
+.lc-modal__3L7G .lc-modal-with-title-header__ld4- {
+    background: #282828 !important;
+}
+
+
+.css-41810s, css-1nefimn {
+    background: #455A64 !important;
+}
+
+.css-1ow0qp2-DetailContainer {
+    background: #313131 !important;
+}
+.css-1g24b1l-SessionListContainer  {
+    background: #313131 !important;
+}
+
+.css-f5vyvp-ItemContainer-StyledListItem {
+    background: #464646 !important;
+}
+
+.css-wnfye6-QuestionListContainer {
+    background: #464646 !important;
+}
+
+.css-2r71si-SessionListHeader, .css-1oyvkl0-InterviewSummaryLeftEle, .css-1kf6237-HeaderDescCompanyName, .css-12tgxhh-QuestionLink, .nav-items__1KWV a, .css-2rerr2-TimeDetail, .us-txt__3qkh {
+    color: white !important;
+}
+
+.root__23T_ {
+    background: #313131;
+}
+
+.container__2AdV {
+    border-top: none;
+}
   `);
 
-    function setup() {
-      // Change the top left logo
-      document.getElementsByClassName("logo__3n_5")[0].src =
-        "/_next/static/images/logo-dark-c96c407d175e36c81e236fcfdd682a0b.png";
+  function setup() {
+    // Change the top left logo
+    document.getElementsByClassName("logo__3n_5")[0].src =
+      "/_next/static/images/logo-dark-c96c407d175e36c81e236fcfdd682a0b.png";
 
-      // Change <p> textcolor
-      const paragraphs = document.querySelectorAll("p");
-      paragraphs.forEach((paragraph) => {
-        paragraph.style.color = "white";
-      });
+    // Change <p> textcolor
+    const paragraphs = document.querySelectorAll("p");
+    paragraphs.forEach((paragraph) => {
+      paragraph.style.color = "white";
+    });
 
-      // Remove autocomplete
-      document.getElementsByClassName("css-10fxeud")[0].remove();
+    // Remove autocomplete
+    document.getElementsByClassName("css-10fxeud")[0].remove();
 
-      // Open console
-      document.getElementsByClassName("custom-testcase__2ah7")[0].click();
+    // Open console
+    document.getElementsByClassName("custom-testcase__2ah7")[0].click();
 
-      setup2();
-    }
-
-    function setup2() {
-      // Remove debugger
-      document
-        .getElementsByClassName(
-          "debugger-tab-header__qIb0 css-1kuaqiy-TabHeader e5i1odf4"
-        )[0]
-        .remove();
-
-      // press add examples
-      document.getElementsByClassName("example-testcases__3q5c")[0].click();
-    }
-
-    setTimeout(setup, 1500);
+    setup2();
   }
+
+  function setup2() {
+    // Remove debugger
+    document
+      .getElementsByClassName(
+        "debugger-tab-header__qIb0 css-1kuaqiy-TabHeader e5i1odf4"
+      )[0]
+      .remove();
+
+    // press add examples
+    document.getElementsByClassName("example-testcases__3q5c")[0].click();
+  }
+
+  setTimeout(setup, 1500);
 }
-setup1();
-setTimeout(setup1, 5000);

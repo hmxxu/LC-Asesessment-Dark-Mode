@@ -20,15 +20,15 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 });
 
 // // call darkmode script on start darkMode is on
-// chrome.tabs.onCreated.addListener(function (tabId, changeInfo, tab) {
-//     chrome.storage.local.get(["darkMode"]).then((result) => {
-//       if (result.darkMode) {
-//         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-//           chrome.scripting.executeScript({
-//             target: { tabId: tabs[0].id },
-//             files: ["appOn.js"],
-//           });
-//         });
-//       }
-//     });
-//   });
+chrome.tabs.onReplaced.addListener(function (tabId, changeInfo, tab) {
+    chrome.storage.local.get(["darkMode"]).then((result) => {
+      if (result.darkMode) {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            files: ["appOn.js"],
+          });
+        });
+      }
+    });
+  });

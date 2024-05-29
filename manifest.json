@@ -23,5 +23,8 @@
     "default_title": "LC Assessment Dark Mode",
     "default_popup": "popup.html"
   },
-  "permissions": ["scripting"]
+  "permissions": ["scripting", "storage", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  }
 }

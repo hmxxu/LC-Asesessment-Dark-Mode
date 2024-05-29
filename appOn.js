@@ -4,11 +4,12 @@ const addStyle = (() => {
   return (styleString) => (style.textContent = styleString);
 })();
 
-if (
-  window.location.href.startsWith("https://leetcode.com/assessment/1") ||
-  window.location.href.startsWith("https://leetcode.com/assessment/2")
-) {
-  addStyle(`
+function setup1() {
+  if (
+    window.location.href.startsWith("https://leetcode.com/assessment/1") ||
+    window.location.href.startsWith("https://leetcode.com/assessment/2")
+  ) {
+    addStyle(`
   .header__2ivW {
     background: #0f0f0f;
     border-bottom: None;
@@ -172,29 +173,40 @@ if (
 }
   `);
 
-  function setup() {
-    // Change the top left logo
-    document.getElementsByClassName("logo__3n_5")[0].src =
-      "/_next/static/images/logo-dark-c96c407d175e36c81e236fcfdd682a0b.png";
+    function setup() {
+      // Change the top left logo
+      document.getElementsByClassName("logo__3n_5")[0].src =
+        "/_next/static/images/logo-dark-c96c407d175e36c81e236fcfdd682a0b.png";
 
-    // Change <p> textcolor
-    const paragraphs = document.querySelectorAll("p");
-    paragraphs.forEach((paragraph) => {
-      paragraph.style.color = "white";
-    });
+      // Change <p> textcolor
+      const paragraphs = document.querySelectorAll("p");
+      paragraphs.forEach((paragraph) => {
+        paragraph.style.color = "white";
+      });
 
-    // Remove autocomplete
-    document.getElementsByClassName("css-10fxeud")[0].remove();
+      // Remove autocomplete
+      document.getElementsByClassName("css-10fxeud")[0].remove();
 
-    // Open console
-    document.getElementsByClassName("custom-testcase__2ah7")[0].click();
+      // Open console
+      document.getElementsByClassName("custom-testcase__2ah7")[0].click();
 
-    // Remove debugger
-    document
-      .getElementsByClassName(
-        "debugger-tab-header__qIb0 css-1kuaqiy-TabHeader e5i1odf4"
-      )[0]
-      .remove();
+      setup2();
+    }
+
+    function setup2() {
+      // Remove debugger
+      document
+        .getElementsByClassName(
+          "debugger-tab-header__qIb0 css-1kuaqiy-TabHeader e5i1odf4"
+        )[0]
+        .remove();
+
+      // press add examples
+      document.getElementsByClassName("example-testcases__3q5c")[0].click();
+    }
+
+    setTimeout(setup, 1500);
   }
-  setTimeout(setup, 3000);
 }
+setup1();
+setTimeout(setup1, 5000);

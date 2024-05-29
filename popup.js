@@ -1,30 +1,57 @@
 if (document.querySelector(".popup")) {
   const button = document.querySelector(".button");
   const circle = document.querySelector(".circle");
-  let buttonOn = false;
 
-  button.addEventListener("click", () => {
-    if (!buttonOn) {
-      buttonOn = true;
+  // move button right instantly or in 1 sec
+  function buttonOn(instant) {
+    let time = instant ? "0" : "1";
+    button.style.animation =
+      "transformToGray " + time + "s ease-in-out 0s forwards";
+    circle.style.animation =
+      "moveCircleRight " + time + "s ease-in-out 0s forwards";
+  }
 
-      button.style.animation = "transformToGray 1s ease-in-out 0s forwards";
-      circle.style.animation = "moveCircleRight 1s ease-in-out 0s forwards";
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.scripting.executeScript({
-          target: { tabId: tabs[0].id },
-          files: ["appOn.js"],
-        });
+  // move button left instantly or in 1 sec
+  function buttonOff(instant) {
+    let time = instant ? "0" : "1";
+    button.style.animation =
+      "transformToWhite " + time + "s ease-in-out 0s forwards";
+    circle.style.animation =
+      "moveCircleLeft " + time + "s ease-in-out 0s forwards";
+  }
+
+  // calls on and off script
+  function app(on) {
+    let file = on ? "appOn.js" : "appOff.js";
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.scripting.executeScript({
+        target: { tabId: tabs[0].id },
+        files: [file],
       });
+    });
+  }
+
+  // Set button to correct side when opened
+  chrome.storage.local.get(["darkMode"]).then((result) => {
+    if (result.darkMode) {
+      buttonOn(true);
     } else {
-      buttonOn = false;
-      button.style.animation = "transformToWhite 1s ease-in-out 0s forwards";
-      circle.style.animation = "moveCircleLeft 1s ease-in-out 0s forwards";
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.scripting.executeScript({
-          target: { tabId: tabs[0].id },
-          files: ["appOff.js"],
-        });
-      });
+      buttonOff(true);
     }
+  });
+
+  // button pressed --> change darkMode var, Slide button, call script
+  button.addEventListener("click", () => {
+    chrome.storage.local.get(["darkMode"]).then((result) => {
+      if (!result.darkMode) {
+        chrome.storage.local.set({ darkMode: true });
+        buttonOn(false);
+        app(true);
+      } else {
+        chrome.storage.local.set({ darkMode: false });
+        buttonOff(false);
+        app(false);
+      }
+    });
   });
 }
